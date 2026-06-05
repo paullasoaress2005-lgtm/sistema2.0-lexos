@@ -1229,11 +1229,6 @@ samp,
   content: "";
 }
 
-.lexos-theme-shell > *:not(.ambient-grid) {
-  position: relative;
-  z-index: 1;
-}
-
 .ambient-grid {
   opacity: 1;
   mix-blend-mode: screen;
