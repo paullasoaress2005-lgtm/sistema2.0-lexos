@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030b13" />
+    <meta name="description" content="LEX.OS Control 2.0, sistema jurídico-operacional com identidade visual do CRM LEX.OS." />
+    <title>LEX.OS Control 2.0</title>
+    <link rel="icon" type="image/png" href="./assets/lexos-favicon.png" />
+    <link rel="apple-touch-icon" href="./assets/lexos-favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
+    <div class="ambient-grid" aria-hidden="true">
+      <div class="grid-light"></div>
+      <div class="grid-crosshair grid-crosshair-x"></div>
+      <div class="grid-crosshair grid-crosshair-y"></div>
+    </div>
+
+    <main id="login-screen" class="login-screen" hidden>
+      <section class="login-copy">
+        <p class="eyebrow">LEX.OS CONTROL</p>
+        <h1>Controle jurídico com menos ruído e mais execução.</h1>
+        <p>Ambiente operacional para atendimento, casos, agenda, automações, finanças e auditoria. A demonstração mantém dados fictícios e prepara a base para autenticação real.</p>
+        <div class="login-metrics">
+          <article><span>92%</span><small>rotinas em acompanhamento</small></article>
+          <article><span>18</span><small>alertas priorizados</small></article>
+          <article><span>0</span><small>ações externas sem aprovação</small></article>
+        </div>
+      </section>
+      <form class="login-card" id="login-form">
+        <img src="./assets/lexos-logo.png" alt="LEX.OS" />
+        <p class="eyebrow">PORTA DE ENTRADA</p>
+        <h2>Acesse o sistema</h2>
+        <label>
+          <span>E-mail</span>
+          <input type="email" autocomplete="email" placeholder="advogado@lexos.ai" />
+        </label>
+        <label>
+          <span>Senha</span>
+          <input type="password" autocomplete="current-password" placeholder="••••••••" />
+        </label>
+        <button class="secondary-button" type="submit">Entrar no ambiente conectado</button>
+        <button class="primary-button" type="button" data-demo-login>Entrar na demonstração</button>
+        <small>Sem dados reais, sem chaves administrativas e sem integrações externas nesta versão visual.</small>
+      </form>
+    </main>
+
+    <div id="app-shell" class="app-shell" hidden>
+      <aside class="sidebar" aria-label="Navegação principal">
+        <div class="brand-block">
+          <img class="brand-mark" src="./assets/lexos-logo.png" alt="LEX.OS" />
+          <div>
+            <p class="brand-name">LEX.OS</p>
+            <p class="brand-subtitle">CONTROL 2.0</p>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <p class="nav-caption">OPERAÇÃO</p>
+          <button class="nav-item is-active" type="button" data-view="dashboard"><i data-lucide="layout-dashboard"></i><span>Visão geral</span></button>
+          <button class="nav-item" type="button" data-view="atendimento"><i data-lucide="messages-square"></i><span>Atendimento</span><span class="live-dot" aria-label="Conversas ativas"></span></button>
+          <button class="nav-item" type="button" data-view="casos"><i data-lucide="briefcase-business"></i><span>Casos</span><span class="nav-count">12</span></button>
+          <button class="nav-item" type="button" data-view="clientes"><i data-lucide="contact-round"></i><span>Clientes</span></button>
+          <button class="nav-item" type="button" data-view="agenda"><i data-lucide="calendar-days"></i><span>Agenda</span></button>
+          <button class="nav-item" type="button" data-view="tarefas"><i data-lucide="list-checks"></i><span>Tarefas</span><span class="nav-alert">7</span></button>
+
+          <p class="nav-caption">GESTÃO</p>
+          <button class="nav-item" type="button" data-view="agentes"><i data-lucide="bot"></i><span>Agentes</span></button>
+          <button class="nav-item" type="button" data-view="financeiro"><i data-lucide="wallet-cards"></i><span>Financeiro</span></button>
+          <button class="nav-item" type="button" data-view="documentos"><i data-lucide="folder-lock"></i><span>Documentos</span></button>
+          <button class="nav-item" type="button" data-view="auditoria"><i data-lucide="shield-check"></i><span>Auditoria</span></button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="workspace-switcher" type="button" data-action="workspace">
+            <span class="workspace-monogram">LX</span>
+            <span><strong>LEX.OS Advocacia</strong><small>Unidade principal</small></span>
+            <i data-lucide="chevrons-up-down"></i>
+          </button>
+          <div class="user-block">
+            <span class="avatar">PS</span>
+            <span><strong>Paulla Soares</strong><small>Administração</small></span>
+            <button class="icon-button" type="button" data-view="configuracoes" aria-label="Configurações"><i data-lucide="settings-2"></i></button>
+          </div>
+        </div>
+      </aside>
+
+      <header class="mobile-header">
+        <div class="mobile-brand"><img src="./assets/lexos-logo.png" alt="" /><span>LEX.OS <small>Control</small></span></div>
+        <div class="mobile-header-actions">
+          <button class="icon-button" type="button" id="mobile-search" aria-label="Pesquisar"><i data-lucide="search"></i></button>
+          <button class="icon-button" type="button" data-action="mobile-menu" aria-label="Abrir menu"><i data-lucide="menu"></i></button>
+        </div>
+      </header>
+
+      <main class="main-area" id="main-content" tabindex="-1">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="view-eyebrow">CENTRAL OPERACIONAL</p>
+            <h1 id="view-title">Visão geral</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="search-trigger" type="button" id="search-trigger"><i data-lucide="search"></i><span>Buscar casos, conversas ou ações</span><kbd>Ctrl K</kbd></button>
+            <button class="icon-button has-indicator" type="button" data-action="notifications" aria-label="Notificações"><i data-lucide="bell"></i></button>
+            <button class="primary-button" type="button" data-open-modal="case"><i data-lucide="plus"></i><span>Novo caso</span></button>
+          </div>
+        </header>
+        <section id="view-root" class="view-root" aria-live="polite"></section>
+      </main>
+
+      <nav class="mobile-nav" aria-label="Navegação mobile">
+        <button class="mobile-nav-item is-active" type="button" data-view="dashboard"><i data-lucide="layout-dashboard"></i><span>Início</span></button>
+        <button class="mobile-nav-item" type="button" data-view="atendimento"><i data-lucide="messages-square"></i><span>Conversas</span></button>
+        <button class="mobile-create" type="button" data-open-modal="case" aria-label="Criar caso"><i data-lucide="plus"></i></button>
+        <button class="mobile-nav-item" type="button" data-view="casos"><i data-lucide="briefcase-business"></i><span>Casos</span></button>
+        <button class="mobile-nav-item" type="button" data-view="tarefas"><i data-lucide="list-checks"></i><span>Tarefas</span></button>
+      </nav>
+    </div>
+
+    <aside class="detail-drawer" id="detail-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <p class="eyebrow">VISÃO DETALHADA</p>
+        <button class="icon-button" type="button" id="close-drawer" aria-label="Fechar"><i data-lucide="x"></i></button>
+      </div>
+      <div id="drawer-content"></div>
+    </aside>
+
+    <div class="modal-backdrop" id="entity-modal" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header">
+          <div><p class="eyebrow" id="modal-eyebrow">NOVO REGISTRO</p><h2 id="modal-title">Cadastrar</h2></div>
+          <button class="icon-button" type="button" data-close-modal aria-label="Fechar"><i data-lucide="x"></i></button>
+        </div>
+        <form class="modal-form" id="entity-form">
+          <div class="form-grid">
+            <label><span>Nome</span><input required placeholder="Nome do registro" /></label>
+            <label><span>Responsável</span><input placeholder="Equipe responsável" /></label>
+            <label class="is-wide"><span>Descrição</span><textarea rows="4" placeholder="Resumo objetivo para acompanhamento"></textarea></label>
+          </div>
+          <div class="form-note"><i data-lucide="shield-check"></i><span>Registro demonstrativo. A integração real deve respeitar autenticação, RLS e auditoria.</span></div>
+          <div class="modal-footer"><button class="secondary-button" type="button" data-close-modal>Cancelar</button><button class="primary-button" type="submit">Salvar</button></div>
+        </form>
+      </section>
+    </div>
+
+    <div class="command-backdrop" id="command-palette" hidden>
+      <section class="command-palette" role="dialog" aria-modal="true" aria-label="Busca rápida">
+        <div class="command-input-wrap"><i data-lucide="search"></i><input id="command-input" type="search" placeholder="Buscar ação, caso ou conversa" /><kbd>Esc</kbd></div>
+        <div class="command-results" id="command-results"></div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
