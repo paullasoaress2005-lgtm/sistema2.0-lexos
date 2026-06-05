@@ -616,6 +616,24 @@ export function Topbar() {
             ) : null}
           </div>
 
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Atalhos rápidos">
+            {[
+              ["/dashboard", "Início"],
+              ["/central-lexos", "Central"],
+              ["/clientes", "Clientes"],
+              ["/processos", "Casos"],
+              ["/tarefas", "Tarefas"],
+            ].map(([href, label]) => (
+              <Link
+                className="rounded-[5px] border border-lexos-line/30 bg-lexos-panel/34 px-2.5 py-2 text-xs font-semibold text-lexos-silver transition hover:border-lexos-cyan/35 hover:bg-lexos-cyan/8 hover:text-white"
+                href={href}
+                key={href}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+
           <Link
             className="hidden rounded-[5px] bg-lexos-cyan px-3.5 py-2.5 text-sm font-semibold text-lexos-ink transition hover:brightness-110 lg:inline-flex"
             href="/central-lexos/dossie-rapido"

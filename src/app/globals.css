@@ -1528,3 +1528,112 @@ main > div {
     backdrop-filter: blur(18px);
   }
 }
+
+/* UX pass: readability, lower scroll, fewer exposed paragraphs, less icon density. */
+.lexos-theme-shell [class*="text-lexos-silver"],
+.lexos-theme-shell .text-white,
+.lexos-theme-shell h1,
+.lexos-theme-shell h2,
+.lexos-theme-shell h3,
+.lexos-theme-shell h4,
+.lexos-theme-shell strong {
+  color: var(--crm-text) !important;
+}
+
+.lexos-theme-shell [class*="text-lexos-muted"],
+.lexos-theme-shell [class*="text-white/"],
+.lexos-theme-shell small,
+.lexos-theme-shell label {
+  color: #a9bac6 !important;
+}
+
+.lexos-theme-shell [class*="placeholder:text-lexos-muted"]::placeholder,
+.lexos-theme-shell input::placeholder,
+.lexos-theme-shell textarea::placeholder {
+  color: rgba(169, 186, 198, 0.76) !important;
+}
+
+.lexos-density-compact main {
+  padding-top: 0.75rem !important;
+  padding-bottom: 4.75rem !important;
+}
+
+.lexos-density-compact .premium-surface,
+.lexos-density-compact .panel,
+.lexos-density-compact .calm-hero,
+.lexos-density-compact .calm-record-card,
+.lexos-density-compact .calm-priority-card,
+.lexos-density-compact .calm-metric-card,
+.lexos-density-compact .executive-panel-compact {
+  padding: 0.85rem !important;
+}
+
+.lexos-density-compact :is(.grid, .space-y-5, .space-y-6, .space-y-7, .space-y-8) {
+  gap: 0.72rem !important;
+}
+
+.lexos-density-compact :is(section, article, aside) p:not(.eyebrow):not([class*="uppercase"]):not([class*="font-mono"]) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.lexos-density-compact :is(section, article, aside) p + p {
+  margin-top: 0.45rem !important;
+}
+
+.lexos-density-compact :is(.calm-metric-card, .metric-card) {
+  min-height: 104px !important;
+}
+
+.lexos-density-compact :is(.calm-record-card, .calm-priority-card, .premium-surface, .panel) :is(svg, [aria-hidden="true"]) {
+  opacity: 0.72;
+}
+
+.lexos-density-compact aside nav span[aria-hidden="true"],
+.lexos-density-compact aside nav span[class*="h-7"][class*="w-7"] {
+  width: 1.55rem !important;
+  height: 1.55rem !important;
+  font-size: 0.58rem !important;
+  opacity: 0.72;
+}
+
+.lexos-density-compact aside nav a {
+  min-height: 2.25rem !important;
+  padding-top: 0.42rem !important;
+  padding-bottom: 0.42rem !important;
+}
+
+.lexos-density-compact header input {
+  min-height: 2.35rem !important;
+}
+
+.lexos-density-compact header nav[aria-label="Atalhos rápidos"] a {
+  white-space: nowrap;
+}
+
+.lexos-density-compact table th,
+.lexos-density-compact table td {
+  padding-top: 0.54rem !important;
+  padding-bottom: 0.54rem !important;
+}
+
+.lexos-density-compact [role="dialog"] p,
+.lexos-density-compact .premium-empty-state p,
+.lexos-density-compact form p,
+.lexos-density-compact form label {
+  display: block !important;
+  overflow: visible !important;
+  -webkit-line-clamp: unset !important;
+}
+
+@media (max-width: 767px) {
+  .lexos-density-compact main {
+    padding-inline: 0.75rem !important;
+  }
+
+  .lexos-density-compact :is(section, article, aside) p:not(.eyebrow):not([class*="uppercase"]):not([class*="font-mono"]) {
+    -webkit-line-clamp: 1;
+  }
+}
