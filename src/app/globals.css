@@ -1147,3 +1147,384 @@ body {
     padding: 0.925rem;
   }
 }
+
+/* LEX.OS CRM full visual pass: applied after the official system styles. */
+:root,
+:root[data-lexos-theme],
+[data-lexos-theme] {
+  --crm-bg: #030b13;
+  --crm-bg-soft: #05111d;
+  --crm-panel: rgba(6, 20, 32, 0.82);
+  --crm-panel-strong: rgba(8, 26, 40, 0.92);
+  --crm-card: rgba(10, 29, 44, 0.76);
+  --crm-line: rgba(151, 192, 210, 0.14);
+  --crm-line-strong: rgba(151, 210, 231, 0.27);
+  --crm-text: #f3f7f8;
+  --crm-muted: #94a8b6;
+  --crm-subtle: #6f8796;
+  --crm-cyan: #6ed9ff;
+  --crm-cyan-soft: rgba(110, 217, 255, 0.14);
+  --crm-gold: #d7b96b;
+  --crm-gold-soft: rgba(215, 185, 107, 0.14);
+  --crm-green: #65d6a3;
+  --crm-red: #f18888;
+  --lexos-body-background:
+    radial-gradient(circle at 72% -18%, rgba(110, 217, 255, 0.12), transparent 27rem),
+    radial-gradient(circle at 18% 10%, rgba(215, 185, 107, 0.045), transparent 22rem),
+    linear-gradient(180deg, #030b13 0%, #05111d 48%, #030b13 100%);
+}
+
+html,
+body {
+  background: var(--crm-bg) !important;
+}
+
+body {
+  color: var(--crm-text);
+  font-family: var(--font-manrope), Manrope, ui-sans-serif, system-ui, sans-serif !important;
+  letter-spacing: 0;
+}
+
+.font-serif,
+.lexos-editorial,
+h1[class],
+h2[class] {
+  font-family: var(--font-newsreader), Newsreader, Georgia, serif;
+}
+
+.font-mono,
+.lexos-mono,
+code,
+kbd,
+samp,
+[class*="font-mono"] {
+  font-family: var(--font-dm-mono), "DM Mono", Consolas, monospace !important;
+}
+
+.lexos-theme-shell {
+  isolation: isolate;
+}
+
+.lexos-theme-shell::before {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(107, 185, 214, 0.043) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 185, 214, 0.036) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.72) 58%, rgba(0, 0, 0, 0.28));
+  content: "";
+}
+
+.lexos-theme-shell::after {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(110, 217, 255, 0.055), transparent 34rem),
+    linear-gradient(135deg, transparent 44%, rgba(215, 185, 107, 0.02));
+  content: "";
+}
+
+.lexos-theme-shell > *:not(.ambient-grid) {
+  position: relative;
+  z-index: 1;
+}
+
+.ambient-grid {
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
+.ambient-grid::before {
+  background-image:
+    linear-gradient(rgba(110, 217, 255, 0.060) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 217, 255, 0.052) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.86), rgba(0,0,0,.44) 55%, transparent 100%);
+}
+
+.grid-light {
+  width: 560px;
+  height: 560px;
+  left: calc(var(--grid-x, 50vw) - 280px);
+  top: calc(var(--grid-y, 22vh) - 280px);
+  background:
+    radial-gradient(circle, rgba(110, 217, 255, 0.15), rgba(110, 217, 255, 0.045) 38%, transparent 70%);
+  filter: blur(1px);
+}
+
+.grid-crosshair-x,
+.grid-crosshair-y {
+  opacity: 0.26;
+}
+
+aside[class*="fixed"][class*="inset-y-0"] {
+  border-right-color: var(--crm-line) !important;
+  background:
+    linear-gradient(180deg, rgba(3, 11, 19, 0.96), rgba(5, 17, 29, 0.91)) !important;
+  box-shadow: 12px 0 42px rgba(0, 0, 0, 0.22) !important;
+  backdrop-filter: blur(20px);
+}
+
+header[class*="sticky"],
+header[class*="top-0"] {
+  border-bottom-color: var(--crm-line) !important;
+  background: rgba(3, 13, 23, 0.78) !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14) !important;
+  backdrop-filter: blur(20px);
+}
+
+main[class] {
+  min-width: 0;
+}
+
+h1[class],
+h2[class],
+h3[class] {
+  color: var(--crm-text) !important;
+  letter-spacing: -0.025em;
+}
+
+h1[class] {
+  line-height: 0.98;
+}
+
+p[class*="tracking"],
+[class*="uppercase"][class*="tracking"] {
+  letter-spacing: 0.18em !important;
+}
+
+[class*="text-lexos-muted"],
+[class*="text-lexos-silver"],
+[class*="text-white/"],
+small[class] {
+  color: var(--crm-muted) !important;
+}
+
+[class*="text-lexos-cyan"],
+[class*="text-lexos-gold"] {
+  color: var(--crm-cyan) !important;
+}
+
+[class*="border-lexos-line"],
+[class*="border-white/"],
+[class*="ring-white/"] {
+  border-color: var(--crm-line) !important;
+}
+
+.premium-surface,
+.panel,
+.table-shell,
+.calm-hero,
+.calm-record-card,
+.calm-priority-card,
+.calm-metric-card,
+.executive-panel-compact,
+section[class*="border"],
+article[class*="border"] {
+  border-radius: 8px !important;
+  border-color: var(--crm-line) !important;
+  background:
+    linear-gradient(135deg, rgba(243, 247, 248, 0.026), transparent 44%),
+    linear-gradient(180deg, rgba(10, 29, 44, 0.82), rgba(5, 17, 29, 0.80)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(243, 247, 248, 0.035),
+    0 16px 38px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(18px);
+}
+
+.premium-surface:hover,
+.panel:hover,
+.calm-record-card:hover,
+.calm-priority-card:hover,
+.calm-metric-card:hover,
+.interactive-card:hover,
+.subtle-hover-card:hover {
+  border-color: rgba(110, 217, 255, 0.26) !important;
+  background:
+    linear-gradient(135deg, rgba(110, 217, 255, 0.045), transparent 48%),
+    linear-gradient(180deg, rgba(12, 34, 50, 0.88), rgba(6, 20, 32, 0.86)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(243, 247, 248, 0.045),
+    0 18px 44px rgba(0, 0, 0, 0.24) !important;
+}
+
+.metric-card,
+.calm-metric-card {
+  min-height: 132px;
+}
+
+a[class],
+button[class] {
+  border-radius: 5px !important;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease !important;
+}
+
+a[class]:hover,
+button[class]:hover {
+  transform: translateY(-1px);
+}
+
+button[class*="bg-lexos-gold"],
+a[class*="bg-lexos-gold"],
+button[class*="bg-lexos-cyan"],
+a[class*="bg-lexos-cyan"],
+.calm-primary-action {
+  border: 1px solid rgba(110, 217, 255, 0.44) !important;
+  background: linear-gradient(180deg, rgba(110, 217, 255, 1), rgba(78, 190, 226, 0.94)) !important;
+  color: var(--crm-bg) !important;
+  box-shadow: 0 0 0 1px rgba(110, 217, 255, 0.14), 0 12px 28px rgba(0, 0, 0, 0.24) !important;
+}
+
+button[class*="border"],
+a[class*="border"],
+.calm-secondary-action {
+  border-color: var(--crm-line) !important;
+}
+
+button[class*="bg-lexos-card"],
+a[class*="bg-lexos-card"],
+button[class*="bg-lexos-panel"],
+a[class*="bg-lexos-panel"],
+button[class*="bg-lexos-ink"],
+a[class*="bg-lexos-ink"],
+.calm-secondary-action {
+  background: rgba(10, 29, 44, 0.58) !important;
+  color: var(--crm-text) !important;
+}
+
+input,
+select,
+textarea,
+.premium-input,
+.field {
+  min-height: 42px;
+  border-radius: 5px !important;
+  border-color: var(--crm-line) !important;
+  background: rgba(5, 17, 29, 0.88) !important;
+  color: var(--crm-text) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(148, 168, 182, 0.72) !important;
+}
+
+table[class] {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead[class],
+thead[class*="bg-lexos"] {
+  background: rgba(5, 17, 29, 0.94) !important;
+}
+
+th[class] {
+  color: var(--crm-subtle) !important;
+  font-family: var(--font-dm-mono), "DM Mono", monospace !important;
+  font-size: 10px !important;
+  letter-spacing: 0.14em !important;
+}
+
+td[class] {
+  color: var(--crm-text) !important;
+}
+
+tbody tr:hover {
+  background: rgba(110, 217, 255, 0.052) !important;
+}
+
+span[class*="rounded-full"][class*="border"],
+.status,
+.priority,
+.tag {
+  border-radius: 999px !important;
+  border-color: rgba(110, 217, 255, 0.22) !important;
+  background: rgba(110, 217, 255, 0.075) !important;
+  color: var(--crm-cyan) !important;
+  font-family: var(--font-dm-mono), "DM Mono", monospace !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.10em !important;
+}
+
+span[class*="text-lexos-red"],
+span[class*="border-lexos-wine"] {
+  color: var(--crm-red) !important;
+  border-color: rgba(241, 136, 136, 0.34) !important;
+  background: rgba(241, 136, 136, 0.09) !important;
+}
+
+span[class*="text-lexos-green"],
+span[class*="border-lexos-green"] {
+  color: var(--crm-green) !important;
+  border-color: rgba(101, 214, 163, 0.34) !important;
+  background: rgba(101, 214, 163, 0.09) !important;
+}
+
+nav a[class*="group"] {
+  min-height: 42px;
+}
+
+nav a[class*="group"]:hover,
+nav a[class*="bg-lexos-cyan"] {
+  background: rgba(110, 217, 255, 0.078) !important;
+  border-color: rgba(110, 217, 255, 0.22) !important;
+  color: var(--crm-text) !important;
+}
+
+nav a[class*="bg-lexos-cyan"] span[class*="rounded"] {
+  border-color: rgba(110, 217, 255, 0.42) !important;
+  background: rgba(110, 217, 255, 0.13) !important;
+  color: var(--crm-cyan) !important;
+}
+
+.premium-empty-state {
+  border-radius: 8px !important;
+  border-color: rgba(110, 217, 255, 0.20) !important;
+  background:
+    linear-gradient(135deg, rgba(110, 217, 255, 0.045), transparent 48%),
+    rgba(6, 20, 32, 0.76) !important;
+}
+
+[role="dialog"],
+[class*="fixed"][class*="z-"][class*="bg-[#"],
+[class*="fixed"][class*="z-"][class*="bg-lexos-panel"] {
+  border-radius: 8px !important;
+  border-color: var(--crm-line-strong) !important;
+  background: rgba(5, 17, 29, 0.98) !important;
+  box-shadow: 0 34px 110px rgba(0, 0, 0, 0.62) !important;
+}
+
+main > section,
+main > div {
+  animation: lexos-view-in 260ms ease both;
+}
+
+@media (max-width: 1023px) {
+  .lexos-theme-shell::before {
+    background-size: 34px 34px;
+    opacity: 0.55;
+  }
+
+  header[class*="sticky"],
+  header[class*="top-0"] {
+    background: rgba(3, 13, 23, 0.92) !important;
+  }
+
+  nav[aria-label="Navegação mobile"] {
+    border-color: var(--crm-line) !important;
+    background: rgba(3, 11, 19, 0.94) !important;
+    backdrop-filter: blur(18px);
+  }
+}
