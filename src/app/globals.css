@@ -1374,10 +1374,16 @@ a[class*="bg-lexos-gold"],
 button[class*="bg-lexos-cyan"],
 a[class*="bg-lexos-cyan"],
 .calm-primary-action {
-  border: 1px solid rgba(110, 217, 255, 0.44) !important;
-  background: linear-gradient(180deg, rgba(110, 217, 255, 1), rgba(78, 190, 226, 0.94)) !important;
-  color: var(--crm-bg) !important;
-  box-shadow: 0 0 0 1px rgba(110, 217, 255, 0.14), 0 12px 28px rgba(0, 0, 0, 0.24) !important;
+  border: 1px solid rgba(110, 217, 255, 0.52) !important;
+  background:
+    linear-gradient(180deg, rgba(110, 217, 255, 0.72), rgba(68, 185, 222, 0.58)),
+    rgba(110, 217, 255, 0.14) !important;
+  color: #03101a !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 0 0 1px rgba(110, 217, 255, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.20) !important;
+  backdrop-filter: blur(16px) saturate(138%);
 }
 
 button[class*="border"],
@@ -1395,6 +1401,42 @@ a[class*="bg-lexos-ink"],
 .calm-secondary-action {
   background: rgba(10, 29, 44, 0.58) !important;
   color: var(--crm-text) !important;
+}
+
+.calm-primary-action:hover,
+button[class*="bg-lexos-gold"]:hover,
+a[class*="bg-lexos-gold"]:hover,
+button[class*="bg-lexos-cyan"]:hover,
+a[class*="bg-lexos-cyan"]:hover {
+  border-color: rgba(110, 217, 255, 0.78) !important;
+  background:
+    linear-gradient(180deg, rgba(126, 224, 255, 0.84), rgba(82, 196, 232, 0.68)),
+    rgba(110, 217, 255, 0.18) !important;
+  color: #020b12 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    0 0 0 1px rgba(110, 217, 255, 0.16),
+    0 14px 32px rgba(0, 0, 0, 0.25),
+    0 0 28px rgba(110, 217, 255, 0.12) !important;
+}
+
+.calm-secondary-action:hover,
+button[class*="bg-lexos-card"]:hover,
+a[class*="bg-lexos-card"]:hover,
+button[class*="bg-lexos-panel"]:hover,
+a[class*="bg-lexos-panel"]:hover,
+button[class*="bg-lexos-ink"]:hover,
+a[class*="bg-lexos-ink"]:hover,
+button[class*="border-lexos-line"]:hover,
+a[class*="border-lexos-line"]:hover {
+  border-color: rgba(110, 217, 255, 0.36) !important;
+  background:
+    linear-gradient(180deg, rgba(110, 217, 255, 0.10), rgba(110, 217, 255, 0.035)),
+    rgba(9, 28, 43, 0.44) !important;
+  color: #f3f7f8 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 24px rgba(0, 0, 0, 0.18) !important;
 }
 
 input,
