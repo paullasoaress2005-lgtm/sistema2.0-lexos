@@ -635,7 +635,7 @@ export function Topbar() {
           </nav>
 
           <Link
-            className="hidden rounded-[5px] bg-lexos-cyan px-3.5 py-2.5 text-sm font-semibold text-lexos-ink transition hover:brightness-110 lg:inline-flex"
+            className="calm-primary-action hidden rounded-[5px] border px-3.5 py-2.5 text-sm font-semibold transition lg:inline-flex"
             href="/central-lexos/dossie-rapido"
           >
             Novo dossiê

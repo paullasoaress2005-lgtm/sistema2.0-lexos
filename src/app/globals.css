@@ -1231,7 +1231,7 @@ samp,
 
 .ambient-grid {
   opacity: 1;
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
 }
 
 .ambient-grid::before {
@@ -1255,6 +1255,12 @@ samp,
 .grid-crosshair-x,
 .grid-crosshair-y {
   opacity: 0.26;
+}
+
+.grid-light,
+.grid-crosshair-x,
+.grid-crosshair-y {
+  display: none !important;
 }
 
 aside[class*="fixed"][class*="inset-y-0"] {
@@ -1672,5 +1678,90 @@ main > div {
 
   .lexos-density-compact :is(section, article, aside) p:not(.eyebrow):not([class*="uppercase"]):not([class*="font-mono"]) {
     -webkit-line-clamp: 1;
+  }
+}
+
+/* LEX.OS Control 2.0: first system pass.
+   Keep the CRM identity, but make the app easier to scan and harder to visually overload. */
+.lexos-density-compact main {
+  position: relative;
+  z-index: 1;
+}
+
+.lexos-density-compact :is(section, article, aside) p:not(.eyebrow):not([class*="uppercase"]):not([class*="font-mono"]) {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+
+.lexos-density-compact :is(.calm-record-card, .calm-priority-card, .operational-record-card, .metric-card, .calm-metric-card, .premium-empty-state) p:not(.eyebrow):not([class*="uppercase"]):not([class*="font-mono"]) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.lexos-density-compact :is(button, a)[class] {
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  text-align: center;
+}
+
+.lexos-density-compact :is(button, a)[class*="bg-lexos-cyan"],
+.lexos-density-compact :is(button, a)[class*="bg-lexos-gold"],
+.lexos-density-compact .calm-primary-action {
+  border-color: rgba(110, 217, 255, 0.48) !important;
+  background:
+    linear-gradient(180deg, rgba(110, 217, 255, 0.22), rgba(110, 217, 255, 0.11)),
+    rgba(6, 25, 38, 0.54) !important;
+  color: #dff8ff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 0 0 1px rgba(110, 217, 255, 0.08),
+    0 10px 22px rgba(0, 0, 0, 0.18) !important;
+}
+
+.lexos-density-compact :is(button, a)[class*="bg-lexos-cyan"]:hover,
+.lexos-density-compact :is(button, a)[class*="bg-lexos-gold"]:hover,
+.lexos-density-compact .calm-primary-action:hover {
+  border-color: rgba(110, 217, 255, 0.72) !important;
+  background:
+    linear-gradient(180deg, rgba(110, 217, 255, 0.30), rgba(110, 217, 255, 0.16)),
+    rgba(8, 32, 48, 0.62) !important;
+  color: #ffffff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 0 0 1px rgba(110, 217, 255, 0.14),
+    0 14px 28px rgba(0, 0, 0, 0.22) !important;
+}
+
+.lexos-density-compact :is(button, a)[class*="border"] {
+  background-color: rgba(6, 20, 32, 0.30);
+}
+
+.lexos-density-compact :is(button, a)[class*="border"]:hover {
+  background-color: rgba(110, 217, 255, 0.07);
+}
+
+.lexos-density-compact :is(button, a)[class]:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(110, 217, 255, 0.10),
+    0 0 22px rgba(110, 217, 255, 0.075) !important;
+}
+
+.lexos-density-compact aside nav a {
+  letter-spacing: 0;
+}
+
+.lexos-density-compact aside nav a:hover span[aria-hidden="true"],
+.lexos-density-compact aside nav a:hover span[class*="h-7"][class*="w-7"] {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .lexos-density-compact :is(.calm-record-card, .calm-priority-card, .operational-record-card, .metric-card, .calm-metric-card, .premium-empty-state) p:not(.eyebrow):not([class*="uppercase"]):not([class*="font-mono"]) {
+    -webkit-line-clamp: 2;
   }
 }

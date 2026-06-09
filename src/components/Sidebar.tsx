@@ -113,8 +113,8 @@ export function Sidebar() {
     <>
       <aside className="fixed inset-y-0 left-0 z-30 hidden h-screen w-[17rem] flex-col border-r border-lexos-line/20 bg-[linear-gradient(180deg,rgba(3,11,19,0.94),rgba(5,17,29,0.88))] px-3 py-4 shadow-[8px_0_30px_rgba(0,0,0,0.20)] backdrop-blur-xl lg:flex">
         <Link href="/dashboard" className="flex shrink-0 items-center gap-3 rounded-[8px] border border-lexos-line/10 bg-lexos-panel/22 px-3 py-3 transition hover:border-lexos-cyan/28" aria-label="Ir para visão geral LEX.OS Control">
-          <span className="grid h-14 w-12 shrink-0 place-items-center rounded-[7px] border border-lexos-cyan/16 bg-lexos-ink/45 shadow-[0_0_26px_rgba(110,217,255,0.10)]">
-            <Image alt="LEX.OS" className="h-12 w-10 object-contain" height={56} priority src="/lexos-logo.png" width={48} />
+          <span className="grid h-14 w-12 shrink-0 place-items-center">
+            <Image alt="LEX.OS" className="h-14 w-12 object-contain drop-shadow-[0_0_18px_rgba(110,217,255,0.16)]" height={56} priority src="/lexos-logo.png" width={48} />
           </span>
           <span className="min-w-0">
             <p className="font-mono text-[10px] uppercase tracking-[0.34em] text-lexos-cyan">LEX.OS</p>

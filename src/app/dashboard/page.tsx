@@ -38,8 +38,8 @@ const toneClasses: Record<DashboardTone, string> = {
   critical: "text-lexos-red/90",
 };
 
-const buttonClasses = "inline-flex items-center justify-center rounded-full bg-lexos-cyan px-4 py-2 text-sm font-semibold text-lexos-ink transition hover:bg-white";
-const secondaryButtonClasses = "inline-flex items-center justify-center rounded-full bg-white/[0.055] px-4 py-2 text-sm font-semibold text-lexos-silver transition hover:bg-white/[0.09] hover:text-white";
+const buttonClasses = "calm-primary-action inline-flex items-center justify-center rounded-[5px] border px-4 py-2 text-sm font-semibold transition";
+const secondaryButtonClasses = "calm-secondary-action inline-flex items-center justify-center rounded-[5px] border px-4 py-2 text-sm font-semibold transition";
 
 type ExecutiveMetric = Pick<DashboardMetric, "id" | "label" | "value" | "detail" | "tone" | "route">;
 type ModuleStatus = "alimentado" | "em atenção" | "sem dados" | "restrito" | "demonstração";
@@ -129,12 +129,12 @@ function SectionHeading({ eyebrow, title, description, action }: { eyebrow: stri
 
 function ExecutiveCard({ metric }: { metric: ExecutiveMetric }) {
   return (
-    <Link className="group rounded-[1.15rem] bg-white/[0.032] px-4 py-3.5 shadow-[0_10px_28px_rgba(0,0,0,0.065)] transition hover:bg-white/[0.052]" href={metric.route}>
+    <Link className="group rounded-[8px] border border-lexos-line/45 bg-white/[0.026] px-3.5 py-3 shadow-[0_10px_28px_rgba(0,0,0,0.065)] transition hover:border-lexos-cyan/30 hover:bg-white/[0.045]" href={metric.route}>
       <span className="block text-[11px] font-medium uppercase tracking-[0.14em] text-lexos-muted">{metric.label}</span>
-      <span className="mt-2 block text-2xl font-semibold tracking-[-0.045em] text-white">{metric.value}</span>
-      <span className={cn("mt-2.5 flex items-center justify-between gap-3 text-[11px] font-medium uppercase tracking-[0.1em]", toneClasses[metric.tone])}>
+      <span className="mt-1.5 block text-2xl font-semibold tracking-[-0.045em] text-white">{metric.value}</span>
+      <span className={cn("mt-2 flex items-center justify-between gap-3 text-[11px] font-medium uppercase tracking-[0.1em]", toneClasses[metric.tone])}>
         <span>{metric.detail}</span>
-        <span className="text-sm text-lexos-muted transition group-hover:text-lexos-cyan">↗</span>
+        <span className="text-[10px] text-lexos-muted transition group-hover:text-lexos-cyan">Abrir</span>
       </span>
     </Link>
   );
@@ -154,11 +154,13 @@ function SecondaryMetric({ metric }: { metric: ExecutiveMetric }) {
 
 function ModuleTile({ module }: { module: ModuleCard }) {
   return (
-    <Link className="group rounded-xl bg-white/[0.02] px-3 py-2.5 transition hover:bg-white/[0.048]" href={module.route}>
-      <span className="text-xs font-semibold text-lexos-silver transition group-hover:text-white">{module.label}</span>
-      <span className="mt-1.5 block text-lg font-semibold tracking-[-0.03em] text-lexos-cyan">{module.value}</span>
-      <span className="mt-0.5 block text-[11px] text-lexos-muted">{module.detail}</span>
-      <span className="mt-1 block text-[10px] capitalize tracking-[0.06em] text-lexos-muted/90">{module.status}</span>
+    <Link className="group grid min-h-[88px] rounded-[8px] border border-lexos-line/45 bg-white/[0.022] px-3 py-2.5 transition hover:border-lexos-cyan/28 hover:bg-white/[0.045]" href={module.route}>
+      <span className="flex items-center justify-between gap-2">
+        <span className="truncate text-xs font-semibold text-lexos-silver transition group-hover:text-white">{module.label}</span>
+        <span className="rounded-full border border-lexos-cyan/18 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-lexos-cyan">{module.status}</span>
+      </span>
+      <span className="mt-2 block text-xl font-semibold tracking-[-0.04em] text-white">{module.value}</span>
+      <span className="mt-1 block truncate text-[11px] text-lexos-muted">{module.detail}</span>
     </Link>
   );
 }
@@ -248,25 +250,27 @@ export default function DashboardPage() {
               ) : null}
             </section>
 
-            <section className="rounded-[1.45rem] bg-lexos-card/16 p-4 shadow-[0_12px_34px_rgba(0,0,0,0.06)] lg:p-5">
-              <SectionHeading eyebrow="Prioridades" title="Onde vale concentrar a atenção humana" description="Uma fila executiva limpa para revisar os pontos mais relevantes sem transformar toda a rotina em alerta." />
-              <div className="mt-3">
+            <section className="rounded-[8px] border border-lexos-line/45 bg-lexos-card/14 p-3.5 shadow-[0_12px_34px_rgba(0,0,0,0.06)] lg:p-4">
+              <SectionHeading eyebrow="Prioridades" title="Atenção humana" description="Apenas o que pede decisão agora. Abra os detalhes quando precisar do motivo e da ação sugerida." />
+              <div className="mt-3 grid gap-2">
                 {actions.map((action) => (
-                  <article className="grid gap-2 border-b border-white/[0.055] px-1 py-3.5 last:border-b-0 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)_auto] lg:items-center" key={action.id}>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-lexos-cyan">{action.category}</p>
-                        <span className={cn("rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em]", action.priority === "urgente" ? "bg-lexos-wine/18 text-lexos-red" : "bg-white/[0.05] text-lexos-muted")}>{action.priority}</span>
-                      </div>
-                      <h3 className="mt-1 font-semibold leading-5 text-white">{action.title}</h3>
-                    </div>
-                    <div className="text-xs leading-5 text-lexos-muted">
+                  <details className="group rounded-[8px] border border-lexos-line/45 bg-white/[0.022] px-3 py-2.5 transition hover:border-lexos-cyan/28 hover:bg-white/[0.04]" key={action.id}>
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
+                      <span className="min-w-0">
+                        <span className="flex flex-wrap items-center gap-2">
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-lexos-cyan">{action.category}</span>
+                          <span className={cn("rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em]", action.priority === "urgente" ? "border-lexos-wine/40 bg-lexos-wine/12 text-lexos-red" : "border-lexos-cyan/18 bg-white/[0.04] text-lexos-muted")}>{action.priority}</span>
+                        </span>
+                        <span className="mt-1 block truncate text-sm font-semibold text-white">{action.title}</span>
+                      </span>
+                      <Link className="calm-secondary-action shrink-0 rounded-[5px] border px-3 py-1.5 text-xs font-semibold" href={action.route}>{action.actionLabel}</Link>
+                    </summary>
+                    <div className="mt-3 grid gap-2 border-t border-white/[0.055] pt-3 text-xs leading-5 text-lexos-muted md:grid-cols-3">
                       <p><strong className="font-semibold text-lexos-silver">Motivo:</strong> {action.reason}</p>
-                      <p className="mt-0.5"><strong className="font-semibold text-lexos-silver">Impacto:</strong> {action.impact}</p>
-                      <p className="mt-0.5"><strong className="font-semibold text-lexos-silver">Ação:</strong> {action.suggestedAction}</p>
+                      <p><strong className="font-semibold text-lexos-silver">Impacto:</strong> {action.impact}</p>
+                      <p><strong className="font-semibold text-lexos-silver">Ação:</strong> {action.suggestedAction}</p>
                     </div>
-                    <Link className="text-xs font-semibold text-lexos-cyan transition hover:text-white" href={action.route}>{action.actionLabel} →</Link>
-                  </article>
+                  </details>
                 ))}
               </div>
             </section>
@@ -301,25 +305,6 @@ export default function DashboardPage() {
           </div>
         </section>
 
-        <section className="border-t border-white/[0.06] pt-4">
-          <SectionHeading eyebrow="Primeiros movimentos" title="Jornada recomendada para alimentar o escritório" description="Uma sequência simples para consolidar a base operacional com apoio controlado da Central LEX.OS." />
-          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2">
-            {[
-              ["Configurações", "/configuracoes"],
-              ["Clientes", "/clientes"],
-              ["Processos", "/processos"],
-              ["Tarefas / Agenda", "/tarefas"],
-              ["Financeiro", "/financeiro"],
-              ["Relatórios / Painel", "/relatorios"],
-              ["Central LEX.OS", "/central-lexos"],
-            ].map(([label, route], index, journey) => (
-              <span className="flex items-center gap-2" key={label}>
-                <Link className="text-sm font-semibold text-lexos-silver transition hover:text-lexos-cyan" href={route}>{index + 1}. {label}</Link>
-                {index < journey.length - 1 ? <span className="text-lexos-cyan/55">→</span> : null}
-              </span>
-            ))}
-          </div>
-        </section>
       </div>
     </AppLayout>
   );
