@@ -1765,3 +1765,81 @@ main > div {
     -webkit-line-clamp: 2;
   }
 }
+
+/* Sistema 2.0 chi: consistent action sizing across pages. */
+.lexos-density-compact {
+  --control-action-height: 2.45rem;
+  --control-action-width: 7.75rem;
+  --control-topbar-width: 5.45rem;
+}
+
+.lexos-density-compact header :is(nav[aria-label] a, a[href="/central-lexos/dossie-rapido"], button[aria-label]) {
+  display: inline-flex !important;
+  width: var(--control-topbar-width) !important;
+  min-width: var(--control-topbar-width) !important;
+  height: var(--control-action-height) !important;
+  min-height: var(--control-action-height) !important;
+  padding: 0 0.7rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: normal;
+  line-height: 1.05;
+}
+
+.lexos-density-compact header button[aria-label="Abrir perfil"] {
+  font-size: 0.75rem !important;
+}
+
+.lexos-density-compact :is(.operational-action, .calm-primary-action, .calm-secondary-action) {
+  display: inline-flex !important;
+  width: var(--control-action-width);
+  min-width: var(--control-action-width);
+  height: var(--control-action-height);
+  min-height: var(--control-action-height) !important;
+  padding: 0 0.85rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 5px !important;
+  text-align: center;
+  line-height: 1.12;
+}
+
+.lexos-density-compact .operational-action-row {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(var(--control-action-width), max-content));
+  gap: 0.45rem !important;
+}
+
+.lexos-density-compact :is(button, a)[class*="rounded-2xl"][class*="px-5"][class*="py-3"],
+.lexos-density-compact :is(button, a)[class*="rounded-xl"][class*="px-4"][class*="py-3"],
+.lexos-density-compact :is(button, a)[class*="rounded-full"][class*="px-4"][class*="py-2"] {
+  display: inline-flex !important;
+  min-width: var(--control-action-width);
+  min-height: var(--control-action-height) !important;
+  padding: 0 0.85rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 5px !important;
+  text-align: center;
+}
+
+.lexos-density-compact header :is(nav[aria-label] a, a[href="/central-lexos/dossie-rapido"], button[aria-label]) {
+  width: var(--control-topbar-width) !important;
+  min-width: var(--control-topbar-width) !important;
+}
+
+@media (max-width: 767px) {
+  .lexos-density-compact {
+    --control-action-width: 100%;
+    --control-topbar-width: 4.8rem;
+  }
+
+  .lexos-density-compact header :is(nav[aria-label] a, a[href="/central-lexos/dossie-rapido"], button[aria-label]) {
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
+  .lexos-density-compact :is(.operational-action, .calm-primary-action, .calm-secondary-action) {
+    width: 100%;
+  }
+}

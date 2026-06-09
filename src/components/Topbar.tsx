@@ -638,7 +638,7 @@ export function Topbar() {
             className="calm-primary-action hidden rounded-[5px] border px-3.5 py-2.5 text-sm font-semibold transition lg:inline-flex"
             href="/central-lexos/dossie-rapido"
           >
-            Novo dossiê
+            + Dossiê
           </Link>
 
           <div className="relative" ref={notificationRef}>
@@ -738,7 +738,7 @@ export function Topbar() {
               }}
               type="button"
             >
-              {session.user.name || "Usuário da demonstração"}
+              Perfil
             </button>
             {profileOpen ? (
               <ProfileOverlay
