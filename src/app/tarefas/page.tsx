@@ -454,9 +454,14 @@ export default function TarefasPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lexos-cyan">Tarefas • execução diária</p>
-              <h1 className="mt-1.5 max-w-4xl text-3xl font-semibold tracking-[-0.035em] text-white">Central de tarefas para prazos, responsáveis e próximas providências.</h1>
-              <p className="mt-2 max-w-3xl text-sm leading-5 text-lexos-muted">Organize pendências, acompanhe vencimentos e mantenha a execução do escritório sob controle.</p>
-              <p className="mt-3 max-w-4xl rounded-2xl border border-lexos-cyan/12 bg-white/[0.035] px-4 py-3 text-sm leading-5 text-lexos-silver">{executionStats.overdue + executionStats.dueToday + executionStats.upcoming + executionStats.unassigned > 0 ? `Hoje a operação exige atenção em ${executionStats.overdue} tarefa(s) atrasada(s), ${executionStats.dueToday} tarefa(s) para hoje, ${executionStats.upcoming} tarefa(s) próximas e ${executionStats.unassigned} tarefa(s) sem responsável.` : "Nenhuma tarefa crítica no momento. Mantenha a rotina de acompanhamento atualizada."}</p>
+              <h1 className="mt-1.5 max-w-4xl text-3xl font-semibold tracking-[-0.035em] text-white">Tarefas</h1>
+              <details className="lexos-disclosure mt-3">
+                <summary>Contexto</summary>
+                <div className="lexos-disclosure-body">
+                  <p>Organize pendências, acompanhe vencimentos e mantenha a execução do escritório sob controle.</p>
+                  <p className="mt-2">{executionStats.overdue + executionStats.dueToday + executionStats.upcoming + executionStats.unassigned > 0 ? `Hoje a operação exige atenção em ${executionStats.overdue} tarefa(s) atrasada(s), ${executionStats.dueToday} tarefa(s) para hoje, ${executionStats.upcoming} tarefa(s) próximas e ${executionStats.unassigned} tarefa(s) sem responsável.` : "Nenhuma tarefa crítica no momento. Mantenha a rotina de acompanhamento atualizada."}</p>
+                </div>
+              </details>
             </div>
             <button className="calm-primary-action" onClick={openCreatePanel} type="button">
               Nova tarefa
@@ -576,20 +581,25 @@ function TaskCard({ compact = false, onArchive, onClick, onComplete, onEdit, onO
               {elevatedPriority ? <StatusBadge status={task.priority} /> : <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-lexos-muted">{task.type} • prioridade {task.priority}</span>}
             </div>
             <h3 className={cn("font-semibold tracking-[-0.015em] text-white", compact ? "mt-2 text-base" : "mt-2 text-lg")}>{task.title}</h3>
-            {!compact ? <p className="mt-2 text-sm leading-5 text-lexos-muted">{task.description || "Sem descrição registrada."}</p> : null}
           </div>
           <div className={cn("shrink-0 rounded-2xl border px-3.5 py-2.5 text-left lg:text-right", isLate ? "border-lexos-gold/22 bg-lexos-gold/[0.055]" : "border-lexos-cyan/12 bg-lexos-ink/42")}>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-lexos-muted">Prazo</p>
             <p className={cn("mt-1 font-semibold", isLate ? "text-lexos-goldSoft" : "text-lexos-cyan")}>{formatDate(task.due_at)}</p>
           </div>
         </div>
-        <div className="mt-3 grid gap-2 md:grid-cols-3">
-          <Info label="Responsável" value={task.responsible || "Sem responsável"} />
-          <Info label="Cliente" value={task.client_name || "Tarefa interna"} />
-          <Info label="Processo" value={task.process_number || "Sem processo vinculado"} />
-        </div>
-        <p className="mt-3 rounded-2xl border border-lexos-cyan/12 bg-white/[0.026] p-3 text-sm leading-5 text-lexos-silver"><span className="font-semibold text-lexos-cyan">Próxima providência:</span> {task.next_action || "Definir próxima providência."}</p>
       </button>
+      <details className="lexos-record-details">
+        <summary>Ver informações</summary>
+        <div className="lexos-record-details-body">
+          <div className="grid gap-2 md:grid-cols-3">
+            <Info label="Responsável" value={task.responsible || "Sem responsável"} />
+            <Info label="Cliente" value={task.client_name || "Tarefa interna"} />
+            <Info label="Processo" value={task.process_number || "Sem processo vinculado"} />
+          </div>
+          {!compact ? <p className="mt-3 text-sm leading-5 text-lexos-muted">{task.description || "Sem descrição registrada."}</p> : null}
+          <p className="mt-3 rounded-md border border-lexos-cyan/12 bg-white/[0.026] p-3 text-sm leading-5 text-lexos-silver"><span className="font-semibold text-lexos-cyan">Próxima providência:</span> {task.next_action || "Definir próxima providência."}</p>
+        </div>
+      </details>
       <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-lexos-line/45 pt-3">
         <button className="rounded-full border border-lexos-cyan/40 bg-lexos-cyan/10 px-3 py-1.5 text-xs font-semibold text-lexos-cyan transition hover:bg-lexos-cyan/16" onClick={onClick} type="button">Abrir tarefa</button>
         {effectiveStatus === "concluida" ? <button className="rounded-full border border-lexos-line/70 px-3 py-1.5 text-xs font-semibold text-lexos-silver transition hover:border-lexos-cyan/35 hover:text-lexos-cyan" onClick={onReopen} type="button">Reabrir</button> : <button className="rounded-full border border-lexos-line/70 px-3 py-1.5 text-xs font-semibold text-lexos-silver transition hover:border-lexos-green/35 hover:text-lexos-green" onClick={onComplete} type="button">Concluir</button>}

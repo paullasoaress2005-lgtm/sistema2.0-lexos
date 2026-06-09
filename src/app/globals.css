@@ -1843,3 +1843,91 @@ main > div {
     width: 100%;
   }
 }
+
+/* Progressive disclosure for Sistema 2.0 chi: keep screens action-first. */
+.lexos-density-compact .lexos-disclosure {
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid rgba(110, 217, 255, 0.16);
+  border-radius: 6px;
+  background: rgba(6, 20, 32, 0.30);
+  color: rgba(185, 198, 210, 0.88);
+}
+
+.lexos-density-compact .lexos-disclosure > summary {
+  display: inline-flex;
+  min-height: 2rem;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.7rem;
+  color: #6ed9ff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lexos-density-compact .lexos-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.lexos-density-compact .lexos-disclosure > summary::after {
+  content: "+";
+  color: rgba(220, 196, 115, 0.88);
+  font-weight: 800;
+}
+
+.lexos-density-compact .lexos-disclosure[open] > summary::after {
+  content: "-";
+}
+
+.lexos-density-compact .lexos-disclosure-body {
+  max-width: 48rem;
+  border-top: 1px solid rgba(110, 217, 255, 0.10);
+  padding: 0.65rem 0.75rem 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.lexos-density-compact .lexos-record-details {
+  margin-top: 0.75rem;
+  width: 100%;
+  flex-basis: 100%;
+  border: 1px solid rgba(110, 217, 255, 0.12);
+  border-radius: 6px;
+  background: rgba(6, 20, 32, 0.22);
+}
+
+.lexos-density-compact .lexos-record-details > summary {
+  display: flex;
+  min-height: 2.2rem;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0.7rem;
+  color: #6ed9ff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.lexos-density-compact .lexos-record-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.lexos-density-compact .lexos-record-details > summary::after {
+  content: "+";
+  color: rgba(220, 196, 115, 0.86);
+}
+
+.lexos-density-compact .lexos-record-details[open] > summary::after {
+  content: "-";
+}
+
+.lexos-density-compact .lexos-record-details-body {
+  border-top: 1px solid rgba(110, 217, 255, 0.10);
+  padding: 0.75rem;
+}

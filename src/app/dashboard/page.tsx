@@ -200,9 +200,12 @@ export default function DashboardPage() {
         <section className="overflow-hidden rounded-[1.75rem] bg-[radial-gradient(circle_at_top_left,rgba(85,201,214,0.105),transparent_40%),linear-gradient(135deg,rgba(18,37,59,0.92),rgba(8,18,33,0.82))] px-5 py-6 shadow-[0_18px_46px_rgba(0,0,0,0.14)] lg:px-7 lg:py-7">
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_310px] xl:items-end">
             <div className="max-w-5xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lexos-cyan">Visão geral • inteligência operacional</p>
-              <h1 className="mt-2.5 max-w-4xl text-3xl font-semibold tracking-[-0.05em] text-white md:text-[2.75rem] md:leading-[1.06]">Bom dia. Vamos organizar os próximos movimentos do escritório.</h1>
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-lexos-silver">Uma leitura consolidada da carteira, prazos, tarefas, financeiro, clientes e uso da Central LEX.OS para apoiar decisões calmas, objetivas e sempre validadas por pessoas.</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lexos-cyan">Visão geral • operação</p>
+              <h1 className="mt-2.5 max-w-4xl text-3xl font-semibold tracking-[-0.05em] text-white md:text-[2.75rem] md:leading-[1.06]">Visão geral</h1>
+              <details className="lexos-disclosure mt-3">
+                <summary>Contexto</summary>
+                <p className="lexos-disclosure-body">Leitura consolidada da carteira, prazos, tarefas, financeiro, clientes e uso da Central LEX.OS para apoiar decisões objetivas e sempre validadas por pessoas.</p>
+              </details>
               <div className="mt-5 flex flex-wrap gap-2.5">
                 <Link className={buttonClasses} href="/central-lexos">Abrir Central LEX.OS</Link>
                 <Link className={secondaryButtonClasses} href="/socios">Ver Painel dos Sócios</Link>
@@ -211,11 +214,17 @@ export default function DashboardPage() {
             <div className="border-l border-white/[0.08] pl-4 xl:pl-5">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lexos-cyan">Leitura de hoje</p>
               <p className="mt-2 text-lg font-semibold tracking-[-0.025em] text-white">{hasImmediateAttention ? "Há pontos para priorizar" : "Operação sob controle"}</p>
-              <p className="mt-1.5 text-sm leading-5 text-lexos-silver">{hasImmediateAttention ? "Alguns sinais operacionais ou financeiros merecem revisão humana antes da rotina ordinária." : "Não há sinais críticos no consolidado atual. Antecipe revisões e mantenha os módulos alimentados."}</p>
+              <details className="lexos-disclosure mt-2">
+                <summary>Ver leitura</summary>
+                <p className="lexos-disclosure-body">{hasImmediateAttention ? "Alguns sinais operacionais ou financeiros merecem revisão humana antes da rotina ordinária." : "Não há sinais críticos no consolidado atual. Antecipe revisões e mantenha os módulos alimentados."}</p>
+              </details>
               <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-lexos-muted">{session.workspace.name}</p>
             </div>
           </div>
-          <p className="mt-5 border-t border-white/[0.06] pt-3 text-xs leading-5 text-lexos-muted">Ambiente de demonstração/local. Dados fictícios ou salvos no navegador. Nenhuma saída externa automática. <span className="text-lexos-goldSoft">Revisão humana obrigatória.</span></p>
+          <details className="lexos-disclosure mt-5">
+            <summary>Ambiente</summary>
+            <p className="lexos-disclosure-body">Ambiente de demonstração/local. Dados fictícios ou salvos no navegador. Nenhuma saída externa automática. <span className="text-lexos-goldSoft">Revisão humana obrigatória.</span></p>
+          </details>
         </section>
 
         <section aria-label="Indicadores executivos">

@@ -488,10 +488,15 @@ function FinanceiroContent() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lexos-cyan">Financeiro • acompanhamento interno</p>
-              <h1 className="mt-1.5 max-w-4xl text-3xl font-semibold tracking-[-0.035em] text-white">Financeiro executivo do escritório.</h1>
-              <p className="mt-2 max-w-4xl text-sm leading-6 text-lexos-muted">Controle interno de recebíveis, vencidos, repasses e previsibilidade de caixa em uma leitura serena para revisão humana.</p>
-              <p className="mt-3 inline-flex rounded-full border border-lexos-gold/20 bg-lexos-gold/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-lexos-goldSoft">Controle interno • sem gateway, PIX, boleto ou contabilidade oficial</p>
-              {FINANCE_REAL_DATA_MODE_LABEL ? <p className="mt-2 text-xs leading-5 text-lexos-muted">Dados de demonstração/local • seguro para testar. {FINANCE_REAL_DATA_MODE_LABEL}</p> : null}
+              <h1 className="mt-1.5 max-w-4xl text-3xl font-semibold tracking-[-0.035em] text-white">Financeiro</h1>
+              <details className="lexos-disclosure mt-3">
+                <summary>Contexto</summary>
+                <div className="lexos-disclosure-body">
+                  <p>Controle interno de recebíveis, vencidos, repasses e previsibilidade de caixa em uma leitura serena para revisão humana.</p>
+                  <p className="mt-2 text-lexos-goldSoft">Controle interno: sem gateway, PIX, boleto ou contabilidade oficial.</p>
+                  {FINANCE_REAL_DATA_MODE_LABEL ? <p className="mt-2">Dados de demonstração/local: seguro para testar. {FINANCE_REAL_DATA_MODE_LABEL}</p> : null}
+                </div>
+              </details>
             </div>
             <div className="flex flex-wrap items-center gap-2 lg:justify-end">
               <button className="calm-primary-action" onClick={() => openCreateForm()} type="button">+ Nova cobrança</button>
@@ -631,13 +636,18 @@ function RecordTable({ onArchive, onOpen, onOpenCreate, onPaid, onReschedule, re
                     <StatusBadge status={statusLabels[row.status]} />
                   </div>
                 </div>
-                <div className="mt-3 grid gap-x-4 gap-y-1.5 text-xs sm:grid-cols-3">
-                  <p className="text-lexos-muted"><span className="font-semibold text-lexos-silver">Responsável:</span> {row.responsible}</p>
-                  <p className="text-lexos-muted"><span className="font-semibold text-lexos-silver">Origem:</span> {getRecordOrigin(row)}</p>
-                  <p className={cn("text-lexos-muted", overdue ? "text-lexos-goldSoft" : "")}><span className="font-semibold text-lexos-silver">Risco financeiro:</span> {getFinancialRisk(row)}</p>
-                </div>
-                <p className={cn("mt-3 rounded-2xl border p-3 text-xs leading-5", overdue ? "border-lexos-gold/18 bg-lexos-gold/[0.055] text-lexos-goldSoft" : "border-lexos-cyan/12 bg-white/[0.026] text-lexos-silver")}><span className="font-semibold uppercase tracking-[0.12em] text-lexos-cyan">Próxima ação:</span> {row.next_action || "Revisar e registrar próxima ação."}</p>
               </button>
+              <details className="lexos-record-details xl:col-span-2">
+                <summary>Ver informações</summary>
+                <div className="lexos-record-details-body">
+                  <div className="grid gap-x-4 gap-y-1.5 text-xs sm:grid-cols-3">
+                    <p className="text-lexos-muted"><span className="font-semibold text-lexos-silver">Responsável:</span> {row.responsible}</p>
+                    <p className="text-lexos-muted"><span className="font-semibold text-lexos-silver">Origem:</span> {getRecordOrigin(row)}</p>
+                    <p className={cn("text-lexos-muted", overdue ? "text-lexos-goldSoft" : "")}><span className="font-semibold text-lexos-silver">Risco financeiro:</span> {getFinancialRisk(row)}</p>
+                  </div>
+                  <p className={cn("mt-3 rounded-md border p-3 text-xs leading-5", overdue ? "border-lexos-gold/18 bg-lexos-gold/[0.055] text-lexos-goldSoft" : "border-lexos-cyan/12 bg-white/[0.026] text-lexos-silver")}><span className="font-semibold uppercase tracking-[0.12em] text-lexos-cyan">Próxima ação:</span> {row.next_action || "Revisar e registrar próxima ação."}</p>
+                </div>
+              </details>
               <div className="flex shrink-0 flex-wrap items-center gap-2 border-t border-lexos-line/45 pt-3 text-xs font-semibold xl:w-[18rem] xl:border-l xl:border-t-0 xl:pl-4 xl:pt-0">
                 <button className="rounded-full border border-lexos-cyan/40 bg-lexos-cyan/10 px-3 py-1.5 text-lexos-cyan transition hover:bg-lexos-cyan/16" onClick={() => onOpen(row)} type="button">Abrir</button>
                 {row.status !== "pago" ? <QuickFinanceAction onClick={() => onPaid(row)}>Marcar pago</QuickFinanceAction> : null}

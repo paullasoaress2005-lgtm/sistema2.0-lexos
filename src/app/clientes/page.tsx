@@ -356,9 +356,12 @@ export default function ClientesPage() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lexos-cyan">Clientes • relacionamento operacional</p>
               <h1 className="mt-1.5 max-w-3xl text-3xl font-semibold tracking-[-0.035em] text-white">Clientes</h1>
-              <p className="mt-1.5 max-w-3xl text-sm leading-5 text-lexos-muted">
-                Acompanhe a carteira do escritório, identifique clientes em atenção e mantenha o relacionamento sob controle. {CLIENT_DATA_MODE_LABEL}
-              </p>
+              <details className="lexos-disclosure mt-2">
+                <summary>Contexto</summary>
+                <p className="lexos-disclosure-body">
+                  Acompanhe a carteira do escritório, identifique clientes em atenção e mantenha o relacionamento sob controle. {CLIENT_DATA_MODE_LABEL}
+                </p>
+              </details>
             </div>
             <button
               data-testid="new-client-button"
@@ -446,18 +449,23 @@ export default function ClientesPage() {
                         {clientSignals.get(client.id)?.inAttention ? <StatusBadge status="Em atenção" /> : null}
                       </div>
                     </div>
-                    <div className="mt-2.5 grid gap-x-4 gap-y-1 text-sm sm:grid-cols-2">
-                      <p className="text-lexos-silver"><span className="text-lexos-muted">Status operacional:</span> {client.status}</p>
-                      <p className="text-lexos-silver"><span className="text-lexos-muted">Último contato:</span> {formatDate(client.last_contact_at)}</p>
-                      <p className="text-lexos-silver sm:col-span-2"><span className="text-lexos-muted">Pendência principal:</span> {client.main_pending}</p>
-                      <p className="text-lexos-cyan sm:col-span-2"><span className="text-lexos-muted">Próxima ação:</span> {client.next_action || "Registrar retorno"}</p>
-                    </div>
-                    {(clientSignals.get(client.id)?.noReply || clientSignals.get(client.id)?.hasBillingPending || clientSignals.get(client.id)?.hasActiveProcess) ? (
-                      <p className="mt-2 text-xs leading-5 text-lexos-muted">
-                        {[clientSignals.get(client.id)?.noReply ? "sem retorno recente" : null, clientSignals.get(client.id)?.hasBillingPending ? "cobrança pendente" : null, clientSignals.get(client.id)?.hasActiveProcess ? "processo ativo" : null].filter(Boolean).join(" • ")}
-                      </p>
-                    ) : null}
                   </button>
+                  <details className="lexos-record-details">
+                    <summary>Ver informações</summary>
+                    <div className="lexos-record-details-body">
+                      <div className="grid gap-x-4 gap-y-1 text-sm sm:grid-cols-2">
+                        <p className="text-lexos-silver"><span className="text-lexos-muted">Status operacional:</span> {client.status}</p>
+                        <p className="text-lexos-silver"><span className="text-lexos-muted">Último contato:</span> {formatDate(client.last_contact_at)}</p>
+                        <p className="text-lexos-silver sm:col-span-2"><span className="text-lexos-muted">Pendência principal:</span> {client.main_pending}</p>
+                        <p className="text-lexos-cyan sm:col-span-2"><span className="text-lexos-muted">Próxima ação:</span> {client.next_action || "Registrar retorno"}</p>
+                      </div>
+                      {(clientSignals.get(client.id)?.noReply || clientSignals.get(client.id)?.hasBillingPending || clientSignals.get(client.id)?.hasActiveProcess) ? (
+                        <p className="mt-2 text-xs leading-5 text-lexos-muted">
+                          {[clientSignals.get(client.id)?.noReply ? "sem retorno recente" : null, clientSignals.get(client.id)?.hasBillingPending ? "cobrança pendente" : null, clientSignals.get(client.id)?.hasActiveProcess ? "processo ativo" : null].filter(Boolean).join(" • ")}
+                        </p>
+                      ) : null}
+                    </div>
+                  </details>
                   <div className="operational-action-row">
                     <button className="operational-action border-transparent bg-white/[0.055] text-lexos-cyan hover:bg-white/[0.09]" onClick={() => openDetails(client)} type="button">Abrir detalhes</button>
                                         <Link href={`/processos?action=novo&clientId=${client.id}`} className="operational-action border-transparent text-lexos-muted hover:bg-white/[0.045] hover:text-white">Criar processo</Link>

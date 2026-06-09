@@ -392,9 +392,14 @@ export default function ProcessosPage() {
           <div className="grid gap-4 xl:grid-cols-[1.55fr_0.75fr] xl:items-end">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lexos-cyan">Processos • acompanhamento executivo</p>
-              <h1 className="mt-2 max-w-4xl text-2xl font-semibold text-white lg:text-3xl">Central processual para priorizar risco, prazo, responsáveis e próximas providências.</h1>
-              <p className="mt-2 max-w-3xl text-sm leading-5 text-lexos-muted">Visão operacional da carteira viva para sócios e advogados tomarem decisões rápidas. {PROCESS_REAL_DATA_MODE_LABEL}</p>
-              <p className="mt-3 rounded-xl border border-lexos-gold/20 bg-lexos-ink/45 px-3.5 py-2.5 text-sm text-lexos-silver">Hoje a carteira exige atenção em <span className="font-semibold text-lexos-goldSoft">{decisionProcesses.length}</span> processo(s), <span className="font-semibold text-lexos-red">{overdueCount}</span> prazo(s) vencido(s), <span className="font-semibold text-lexos-goldSoft">{upcomingCount}</span> prazo(s) próximo(s) e <span className="font-semibold text-lexos-goldSoft">{highRiskCount}</span> item(ns) de risco alto/crítico.</p>
+              <h1 className="mt-2 max-w-4xl text-2xl font-semibold text-white lg:text-3xl">Processos</h1>
+              <details className="lexos-disclosure mt-3">
+                <summary>Contexto</summary>
+                <div className="lexos-disclosure-body">
+                  <p>Visão operacional da carteira viva para sócios e advogados tomarem decisões rápidas. {PROCESS_REAL_DATA_MODE_LABEL}</p>
+                  <p className="mt-2">Hoje a carteira exige atenção em <span className="font-semibold text-lexos-goldSoft">{decisionProcesses.length}</span> processo(s), <span className="font-semibold text-lexos-red">{overdueCount}</span> prazo(s) vencido(s), <span className="font-semibold text-lexos-goldSoft">{upcomingCount}</span> prazo(s) próximo(s) e <span className="font-semibold text-lexos-goldSoft">{highRiskCount}</span> item(ns) de risco alto/crítico.</p>
+                </div>
+              </details>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1"><div className="rounded-xl border border-lexos-green/40 bg-lexos-green/10 p-3"><p className="text-xs uppercase tracking-[0.18em] text-lexos-green">Carteira ativa</p><p className="mt-2 text-2xl font-semibold text-white">{activeCount}</p></div><div className="flex flex-wrap gap-3"><Link className="calm-secondary-action" href="/processos/parcerias">Parcerias</Link><button className="calm-primary-action" onClick={openCreatePanel} type="button">Novo processo</button></div></div>
           </div>
@@ -469,13 +474,16 @@ export default function ProcessosPage() {
                       </div>
                       <div className="flex flex-wrap gap-2 sm:justify-end"><StatusBadge status={process.status} /><StatusBadge status={`risco ${process.risk}`} /></div>
                     </div>
-                    <div className="mt-3 grid gap-2 text-sm md:grid-cols-2">
+                  </button>
+                  <details className="lexos-record-details">
+                    <summary>Ver informações</summary>
+                    <div className="lexos-record-details-body grid gap-2 text-sm md:grid-cols-2">
                       <QuickInfo label="Responsável" value={process.responsible} />
                       <QuickInfo label="Prazo" value={getDeadlineState(process.next_deadline_at).label} highlight={getDeadlineState(process.next_deadline_at).tone !== "neutral"} />
                       <QuickInfo label="Próxima providência" value={process.next_action || "Definir providência"} major />
                       <QuickInfo label="Parte contrária" value={process.opposing_party || "Não informada"} />
                     </div>
-                  </button>
+                  </details>
                   <div className="mt-3 grid gap-2 sm:grid-cols-3">
                     <button className="rounded-xl border border-lexos-gold/40 px-3 py-2 text-xs font-semibold text-lexos-gold hover:bg-lexos-gold/10" onClick={() => openDetails(process)} type="button">Abrir processo</button>
                     <Link className="rounded-xl border border-lexos-line px-3 py-2 text-center text-xs font-semibold text-lexos-silver hover:border-lexos-gold hover:text-lexos-gold" href={`/tarefas?processId=${process.id}&action=nova`}>Criar tarefa</Link>
