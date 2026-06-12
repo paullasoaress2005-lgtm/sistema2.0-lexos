@@ -120,7 +120,12 @@ function SectionHeading({ eyebrow, title, description, action }: { eyebrow: stri
       <div>
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lexos-cyan">{eyebrow}</p>
         <h2 className="mt-1 text-xl font-semibold tracking-[-0.035em] text-white">{title}</h2>
-        {description ? <p className="mt-1.5 max-w-3xl text-sm leading-5 text-lexos-muted">{description}</p> : null}
+        {description ? (
+          <details className="lexos-disclosure mt-2">
+            <summary>Detalhes</summary>
+            <p className="lexos-disclosure-body">{description}</p>
+          </details>
+        ) : null}
       </div>
       {action ? <div className="shrink-0">{action}</div> : null}
     </div>

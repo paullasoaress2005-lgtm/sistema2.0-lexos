@@ -454,12 +454,12 @@ export default function ProcessosPage() {
               ))}
             </div>
           ) : (
-            <EmptyState title="Nenhum processo exige decisão imediata." description="Continue acompanhando a carteira ativa abaixo." />
+            <EmptyState title="Nenhuma decisão imediata." description="Carteira ativa abaixo." />
           )}
         </SectionCard>
 
         <SectionCard eyebrow="Carteira" title={processViewTitle(activeView)} action={!loading ? <span className="rounded-full border border-lexos-cyan/35 px-3 py-1 text-xs font-semibold text-lexos-cyan">{filteredProcesses.length} processo(s)</span> : null}>
-          {loading ? <EmptyState title="Carregando processos do escritório..." description="Preparando a carteira do escritório atual." /> : filteredProcesses.length ? (
+          {loading ? <EmptyState title="Carregando processos..." description="Preparando carteira." /> : filteredProcesses.length ? (
             <div className="space-y-3">
               <PaginationControls currentPage={page} onPageChange={setPage} pageSize={PROCESS_PAGE_SIZE} totalItems={filteredProcesses.length} />
               <div className="grid gap-3 xl:grid-cols-2">
@@ -497,7 +497,7 @@ export default function ProcessosPage() {
               </div>
               <PaginationControls currentPage={page} onPageChange={setPage} pageSize={PROCESS_PAGE_SIZE} totalItems={filteredProcesses.length} />
             </div>
-          ) : <EmptyState title="Não há processos cadastrados ainda." description="A primeira recomendação é cadastrar os processos ativos e associá-los aos clientes responsáveis." actionLabel="Cadastrar processo" onAction={openCreatePanel} />}
+          ) : <EmptyState title="Nenhum processo cadastrado." description="Cadastre processos ativos." actionLabel="Cadastrar processo" onAction={openCreatePanel} />}
         </SectionCard>
       </div>
 

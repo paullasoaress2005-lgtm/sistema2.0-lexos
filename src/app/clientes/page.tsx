@@ -430,7 +430,7 @@ export default function ClientesPage() {
 
         <SectionCard className="operational-panel-compact" eyebrow="Carteira" title={clientListTitles[status]} action={!loading ? <span className="rounded-full border border-lexos-cyan/35 px-3 py-1 text-xs font-semibold text-lexos-cyan">{filteredClients.length} cliente(s)</span> : null}>
           {loading ? (
-            <EmptyState title="Carregando carteira do escritório..." description="Preparando os registros do escritório com segurança." />
+            <EmptyState title="Carregando carteira..." description="Preparando registros." />
           ) : filteredClients.length ? (
             <div className="space-y-3">
               <PaginationControls currentPage={page} onPageChange={setPage} pageSize={CLIENT_PAGE_SIZE} totalItems={filteredClients.length} />
@@ -480,7 +480,7 @@ export default function ClientesPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              <EmptyState title="Nenhum cliente cadastrado ainda." description="Cadastre o primeiro cliente para começar a acompanhar pendências, contatos, processos e financeiro." />
+              <EmptyState title="Nenhum cliente cadastrado." description="Cadastre o primeiro cliente." />
               <button className="mx-auto block rounded-2xl border border-lexos-gold/60 bg-lexos-gold px-5 py-3 text-sm font-semibold text-lexos-ink transition hover:bg-lexos-goldSoft" onClick={openCreatePanel} type="button">Cadastrar cliente</button>
             </div>
           )}

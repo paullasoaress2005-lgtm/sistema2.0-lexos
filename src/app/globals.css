@@ -1849,9 +1849,15 @@ main > div {
   width: fit-content;
   max-width: 100%;
   border: 1px solid rgba(110, 217, 255, 0.16);
-  border-radius: 6px;
-  background: rgba(6, 20, 32, 0.30);
+  border-radius: 8px;
+  background: rgba(9, 24, 43, 0.42);
   color: rgba(185, 198, 210, 0.88);
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.lexos-density-compact .lexos-disclosure:hover {
+  border-color: rgba(202, 165, 91, 0.34);
+  background: rgba(15, 34, 57, 0.56);
 }
 
 .lexos-density-compact .lexos-disclosure > summary {
@@ -1867,6 +1873,13 @@ main > div {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  outline: none;
+}
+
+.lexos-density-compact .lexos-disclosure > summary:focus-visible,
+.lexos-density-compact .lexos-record-details > summary:focus-visible {
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px rgba(202, 165, 91, 0.45);
 }
 
 .lexos-density-compact .lexos-disclosure > summary::-webkit-details-marker {
@@ -1896,8 +1909,14 @@ main > div {
   width: 100%;
   flex-basis: 100%;
   border: 1px solid rgba(110, 217, 255, 0.12);
-  border-radius: 6px;
-  background: rgba(6, 20, 32, 0.22);
+  border-radius: 8px;
+  background: rgba(9, 24, 43, 0.34);
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.lexos-density-compact .lexos-record-details:hover {
+  border-color: rgba(202, 165, 91, 0.30);
+  background: rgba(15, 34, 57, 0.46);
 }
 
 .lexos-density-compact .lexos-record-details > summary {
@@ -1912,6 +1931,7 @@ main > div {
   color: #6ed9ff;
   font-size: 0.75rem;
   font-weight: 700;
+  outline: none;
 }
 
 .lexos-density-compact .lexos-record-details > summary::-webkit-details-marker {

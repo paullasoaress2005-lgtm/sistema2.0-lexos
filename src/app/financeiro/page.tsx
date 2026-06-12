@@ -612,7 +612,7 @@ function RecordTable({ onArchive, onOpen, onOpenCreate, onPaid, onReschedule, re
     setPage(1);
   }, [records.length]);
 
-  if (!records.length) return <EmptyState title="Nenhum lançamento financeiro cadastrado." description="Cadastre recebíveis, vencimentos ou cobranças para acompanhar a previsibilidade de caixa do escritório." actionLabel="Criar cobrança interna" onAction={onOpenCreate} />;
+  if (!records.length) return <EmptyState title="Nenhum lançamento financeiro." description="Crie o primeiro registro." actionLabel="Criar cobrança interna" onAction={onOpenCreate} />;
 
   const visibleRecords = records.slice((page - 1) * FINANCE_PAGE_SIZE, page * FINANCE_PAGE_SIZE);
 
@@ -668,7 +668,7 @@ function QuickFinanceAction({ children, onClick }: { children: ReactNode; onClic
 }
 
 function DelinquentList({ clients, onOpen }: { clients: ReturnType<typeof getDelinquentClients>; onOpen: (record: FinancialRecord) => void }) {
-  if (!clients.length) return <EmptyState title="Nenhum cliente inadimplente" description="Não há cliente com registro vencido neste recorte." />;
+  if (!clients.length) return <EmptyState title="Nenhum cliente inadimplente" description="Sem vencidos neste recorte." />;
   const visibleClients = clients.slice(0, 6);
   return (
     <div className="space-y-3">
